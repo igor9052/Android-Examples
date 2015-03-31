@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/gson/gson.iml" filepath="$PROJECT_DIR$/gson/gson.iml" />
       <module fileurl="file://$PROJECT_DIR$/location/location.iml" filepath="$PROJECT_DIR$/location/location.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediaplayer/mediaplayer.iml" filepath="$PROJECT_DIR$/mediaplayer/mediaplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smscall/smscall.iml" filepath="$PROJECT_DIR$/smscall/smscall.iml" />
     </modules>
   </component>
 </project>
