@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">AppWidget</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_text_set_new_widget_text">Set new widget text</string>
+    <string name="button_text_set_update_interval">Set interval</string>
+    <string name="activity_title_app_widget_configuration">App Widget Configuration</string>
+
+    <string-array name="widget_updates_intervals_items">
+        <item>1 seconds</item>
+        <item>1 minute</item>
+        <item>5 minutes</item>
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+    </string-array>
+    <string-array name="widget_updates_intervals_values">
+        <item>1000</item>
+        <item>60000</item>
+        <item>300000</item>
+        <item>900000</item>
+        <item>2700000</item>
+        <item>3600000</item>
+        <item>10800000</item>
+        <item>21600000</item>
+    </string-array>
+</resources>

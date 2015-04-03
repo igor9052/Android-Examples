@@ -3,7 +3,10 @@
     package="ua.com.igorka.oa.android.smscall" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
 
+    <uses-feature android:name="android.hardware.telephony"/>
 
     <application
         android:allowBackup="true"
@@ -29,6 +32,15 @@
 
         <receiver android:name=".SendSMSActivity$DeliverySmsBroadcastReceiver" >
         </receiver>
+
+        <receiver android:name=".SendSMSActivity$SmsReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </receiver>
+
     </application>
 
 </manifest>

@@ -1,1 +1,1 @@
-include ':fragments', ':gson', ':mediaplayer', ':location', ':smscall'
+include ':fragments', ':gson', ':mediaplayer', ':location', ':smscall', ':animation', ':appwidget'

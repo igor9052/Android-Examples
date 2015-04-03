@@ -5,8 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.support.v7.app.ActionBarActivity;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -91,6 +94,50 @@ public class SendSMSActivity extends ActionBarActivity {
             Toast.makeText(context, "Message was delivered to number " + intent.getStringExtra(EXTRA_PHONE_NUMBER)
                     ,Toast.LENGTH_LONG).show();
 
+        }
+    }
+
+    public static class SmsReceiver extends BroadcastReceiver {
+
+        public static final String SMS_RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED";
+        public static final String TAG = "SMS_RECEIVER";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.i(TAG, "Received message");
+            if (intent.getAction().equals(SMS_RECEIVED_ACTION)){
+                SmsMessage[] messages = getMessagesFromIntent(intent);
+
+                for (SmsMessage message : messages){
+
+                    Log.d(TAG, message.getOriginatingAddress() + " : " +
+                            message.getDisplayOriginatingAddress() + " : " +
+                            message.getDisplayMessageBody() + " : " +
+                            message.getTimestampMillis());
+                }
+            }
+        }
+
+        public final SmsMessage[] getMessagesFromIntent(Intent intent){
+
+            Object[] messages = (Object[]) intent.getSerializableExtra("pdus");
+            byte[][] pduObjs = new byte[messages.length][];
+
+            for (int i = 0; i < messages.length; i++){
+                pduObjs[i] = (byte[]) messages[i];
+            }
+
+            byte[][] pdus = new byte[pduObjs.length][];
+            int pduCount = pdus.length;
+
+            SmsMessage[] msgs = new SmsMessage[pduCount];
+            for (int i = 0; i < pduCount; i++)
+            {
+                pdus[i] = pduObjs[i];
+                msgs[i] = SmsMessage.createFromPdu(pdus[i]);
+            }
+
+            return msgs;
         }
     }
 
