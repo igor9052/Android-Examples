@@ -2,7 +2,6 @@
     <string name="app_name">AppWidget</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="button_text_set_new_widget_text">Set new widget text</string>
     <string name="button_text_set_update_interval">Set interval</string>
     <string name="activity_title_app_widget_configuration">App Widget Configuration</string>
 

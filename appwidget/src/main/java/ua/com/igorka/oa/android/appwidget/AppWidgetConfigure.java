@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 /**
  * Created by Igor Kuzmenko on 03.04.2015.
@@ -65,12 +64,12 @@ public class AppWidgetConfigure extends Activity {
             public void onClick(View v) {
                 AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
                 Intent intent = new Intent(getApplicationContext(), WidgetUpdateService.class);
-                PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), 0, intent, 0);
+                intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+                PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(), mAppWidgetId, intent, 0);
                 alarmManager.setRepeating(AlarmManager.RTC,
-                        System.currentTimeMillis() + 1000,
+                        System.currentTimeMillis(),
                         updateInterval,
                         pendingIntent);
-                Toast.makeText(getApplicationContext(), String.valueOf(updateInterval), Toast.LENGTH_LONG).show();
 
                 Intent resultValue = new Intent();
                 resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);

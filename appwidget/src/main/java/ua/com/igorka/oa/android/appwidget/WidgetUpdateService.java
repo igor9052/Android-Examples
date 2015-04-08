@@ -2,7 +2,6 @@ package ua.com.igorka.oa.android.appwidget;
 
 import android.app.IntentService;
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -21,7 +20,6 @@ public class WidgetUpdateService extends IntentService {
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
      */
     public WidgetUpdateService() {
         super(WidgetUpdateService.class.getSimpleName());
@@ -31,9 +29,7 @@ public class WidgetUpdateService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         RemoteViews views = new RemoteViews(getApplicationContext().getPackageName(), R.layout.appwidget);
         views.setTextViewText(R.id.text_widget_text, new SimpleDateFormat("hh:mm:ss", Locale.getDefault()).format(new Date()));
-        ComponentName thisWidget = new ComponentName(getApplicationContext(), AppWidget.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
-        manager.updateAppWidget(thisWidget, views);
-        Log.i(TAG, "update");
+        manager.updateAppWidget(intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID), views);
     }
 }

@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 /**
@@ -25,6 +26,18 @@ public class AppWidget extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         Log.i(TAG, "ON_ENABLED " + context.toString());
+    }
+
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        for (int widgetId : appWidgetIds) {
+            Intent intent = new Intent(context, WidgetUpdateService.class);
+            PendingIntent pendingIntent = PendingIntent.getService(context, widgetId, intent, 0);
+            alarmManager.cancel(pendingIntent);
+            Log.i(TAG, "Widget deleted: " + widgetId);
+        }
+        super.onDeleted(context, appWidgetIds);
     }
 
     @Override

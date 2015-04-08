@@ -5,5 +5,6 @@
     android:initialLayout="@layout/appwidget"
     android:configure="ua.com.igorka.oa.android.appwidget.AppWidgetConfigure"
     android:previewImage="@drawable/app_widget_ori_portrait"
-    android:resizeMode="horizontal|vertical">
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen">
 </appwidget-provider>
