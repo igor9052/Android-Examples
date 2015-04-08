@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/animation" />
             <option value="$PROJECT_DIR$/appwidget" />
+            <option value="$PROJECT_DIR$/fragmentation" />
             <option value="$PROJECT_DIR$/fragments" />
             <option value="$PROJECT_DIR$/gson" />
             <option value="$PROJECT_DIR$/location" />
